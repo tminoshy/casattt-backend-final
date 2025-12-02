@@ -1,6 +1,7 @@
 package com.bookmanagement.service;
 
 import com.bookmanagement.dto.UserInformationResponse;
+import com.bookmanagement.entity.User;
 import com.bookmanagement.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,8 +21,14 @@ public class UserService {
                     response.setSex(user.getSex());
                     response.setEmail(user.getEmail());
                     response.setPhoneNumber(user.getPhoneNumber());
+                    response.setUsername(user.getUsername());
                     return response;
                 })
+                .orElse(null);
+    }
+
+    public User findById(Long id) {
+        return userRepository.findById(id)
                 .orElse(null);
     }
 }

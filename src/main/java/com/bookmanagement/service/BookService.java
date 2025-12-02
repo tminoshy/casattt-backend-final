@@ -23,6 +23,7 @@ public class BookService {
     private final UserRepository userRepository;
 
     public Book addBook(Long adminId, BookRequest request) {
+        System.out.println("called");
         User admin = userRepository.findById(adminId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
         
